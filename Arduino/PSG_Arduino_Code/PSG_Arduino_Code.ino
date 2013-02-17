@@ -6,11 +6,11 @@
  Last updated January 22, 2013.
  This code works on any Arduino or the Standalone Sentry Controller, and is compatible with version 6.13 of the Processing code.     */
 
- // Set your controller type here
- // type options: "Arduino_bare", "Shield_v4", "Shield_v6", "Shield_v7", "Standalone_v3", "Standalone_v5", "Standalone_v7", "Standalone_v8"
- #define type "Arduino_bare" 
- 
- 
+// Set your controller type here
+// type options: "Arduino_bare", "Shield_v4", "Shield_v6", "Shield_v7", "Standalone_v3", "Standalone_v5", "Standalone_v7", "Standalone_v8"
+#define type "Arduino_bare" 
+
+
 /* Help & Reference: http://projectsentrygun.rudolphlabs.com/make-your-own
  Forum: http://projectsentrygun.rudolphlabs.com/forum
  
@@ -52,6 +52,10 @@
 
 // disable plate settings:
 #define disablePlateDelay 5000               // how long to disable sentry when plate is pressed (in milliseconds)
+
+// ammunition magazine/clip settings:
+boolean useAmmoCounter = true;                  // if you want to use the shot counter / clip size feature, set this to true
+int clipSize = 5;                          // how many shots before the gun will be empty and the gun will be disabled (reload switch resets the ammo counter)
 
 //   <=========================================================================>
 //                      End custom values
@@ -146,6 +150,9 @@ boolean disabled = false;
 unsigned long int disableEndTime;
 int scanXPosition = panServo_scanningMin;
 
+int shotCounter = 0;                  // number of shots fires since last reload
+boolean clipEmpty = false;            // is the ammo magazine empty?
+
 
 byte indicator;                       // if 'a', continue, if 'z', idle
 byte x100byte;                        // some bytes used during serial communication
@@ -160,7 +167,7 @@ byte scanningByte;
 
 void setup(){
   assignPins();
-  
+
   pan.attach(panServoPin);             // set up the x axis servo
   pan.write(panServo_HomePosition);
   tilt.attach(tiltServoPin);           // set up the y axis servo
@@ -286,7 +293,8 @@ void loop() {
     disabled = false;
   }
 
-  if((digitalRead(reloadSwitchPin) == HIGH && !invertInputs) || (digitalRead(reloadSwitchPin) == LOW && invertInputs) || disabled) {     // check the reload switch to see if it is flipped
+  if((digitalRead(reloadSwitchPin) == HIGH && !invertInputs) || (digitalRead(reloadSwitchPin) == LOW && invertInputs)) {     // check the reload switch to see if it is flipped
+    shotCounter = 0;
     xPosition = panServo_ReloadPosition;    // if it is flipped, override computer commands, 
     yPosition = tiltServo_ReloadPosition;   // and send the servos to their reload positions
     fire = 0;                        // don't fire while reloading
@@ -295,10 +303,29 @@ void loop() {
     digitalWrite(modeIndicatorLEDPin, LOW);
     delay(100);
   }  
+  
+  if(disabled) {
+    xPosition = panServo_ReloadPosition;    // if it is flipped, override computer commands, 
+    yPosition = tiltServo_ReloadPosition;   // and send the servos to their reload positions
+    fire = 0;                        // don't fire while reloading
+    digitalWrite(modeIndicatorLEDPin, HIGH);
+    delay(50);
+    digitalWrite(modeIndicatorLEDPin, LOW);
+    delay(50);
+  }
 
   pan.write(xPosition);        // send the servos to whatever position has been commanded
   tilt.write(yPosition);       //
-  if(fire == 1) {           // if firing...
+
+  if(useAmmoCounter && shotCounter >= clipSize) {
+    clipEmpty = true;
+  }
+  else{
+    clipEmpty = false;
+  }
+
+
+  if(fire == 1 && !clipEmpty) {           // if firing...
     Fire(fireSelector);       // fire the gun in whatever firing mode is selected
   } 
   else{                     // if not firing...
@@ -321,6 +348,9 @@ void Fire(int selector) {         // function to fire the gun, based on what fir
     }
     if(fireTimer >= 1.5*triggerTravelMillis) {
       fireTimer = 0;
+      if(useAmmoCounter) {
+        shotCounter++;      // increment the shot counter
+      }
     }
   }
   if(selector == 3) {
@@ -469,4 +499,5 @@ void assignPins() {
     invertInputs = true;                   // TRUE turns on internal pull-ups, use if closed switch connects arduino pin to ground
   }
 }
+
 
