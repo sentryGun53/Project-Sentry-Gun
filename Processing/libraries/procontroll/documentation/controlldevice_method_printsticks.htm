@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>proCONTROLL : : ControllDevice : : printSticks ( )</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body> 
+<div id="page"> 
+  <div id="describtion"> 
+    <div id="libname"><img src="images/procontroll.gif" width="259" height="40"></div> 
+    <div id="indexlink"><a href="index.htm"><img src="images/index.gif"></a></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> name </div> 
+    <div id="pointcontent"><div id="membertitle"> printSticks ( ) </div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"><a href="#" id="exampleButton" onClick="handleExample()">openExample</a></div> 
+    <div id="pointcontent"><div id="example"><pre>import procontroll.*;
+import java.io.*;
+
+ControllIO controll;
+ControllDevice device;
+ControllStick stick;
+ControllButton button;
+
+void setup(){
+  size(400,400);
+  
+  controll = ControllIO.getInstance(this);
+
+  device = controll.getDevice("Logitech RumblePad 2 USB");
+  device.printSticks();
+  device.setTolerance(0.05f);
+  
+  ControllSlider sliderX = device.getSlider("X-Achse");
+  ControllSlider sliderY = device.getSlider("Y-Achse");
+  
+  stick = new ControllStick(sliderX,sliderY);
+  
+  button = device.getButton("Taste 0");
+  
+  fill(0);
+  rectMode(CENTER);
+}
+
+float totalX = width/2;
+float totalY = height/2;
+
+void draw(){
+  background(255);
+  
+  if(button.pressed()){
+    fill(255,0,0);
+  }else{
+    fill(0);
+  }
+  
+  totalX = constrain(totalX + stick.getX(),10,width-10);
+  totalY = constrain(totalY + stick.getY(),10,height-10);
+  
+  rect(totalX,totalY,20,20);
+}
+</pre></div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> description </div> 
+    <div id="pointcontent">Lists the available sticks of a device in the console window. This method
+ is usefull at startup to get the name of the different sticks.</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> syntax </div> 
+    <div id="pointcontent"> 
+      <pre>printSticks();
+</pre> 
+    </div> 
+  </div> 
+    
+<div id="point"> 
+  <div id="pointname"> returns </div> 
+  <div id="pointcontent">None</div> 
+</div> 
+
+  <div id="point"> 
+    <div id="pointname"> usage </div> 
+    <div id="pointcontent">Web & Application</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> related </div> 
+    <div id="pointcontent"><A href="controlldevice_class_controlldevice.htm">ControllDevice</A><BR>
+<A href="controllstick_class_controllstick.htm">ControllStick</A><BR>
+<A href="controlldevice_method_printsliders.htm">printSliders ( )</A><BR>
+<A href="controlldevice_method_printbuttons.htm">printButtons ( )</A><BR>
+</div> 
+  </div> 
+</div> 
+</body>
+<script language="JavaScript" src="script.js" type="text/javascript"></script>
+</html>

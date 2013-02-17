@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>proCONTROLL : : ControllDevice</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body> 
+<div id="page"> 
+  <div id="describtion"> 
+    <div id="libname"><img src="images/procontroll.gif" width="259" height="40"></div> 
+    <div id="indexlink"><a href="index.htm"><img src="images/index.gif"></a></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> name </div> 
+    <div id="pointcontent"><div id="membertitle"> ControllDevice </div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"><a href="#" id="exampleButton" onClick="handleExample()">openExample</a></div> 
+    <div id="pointcontent"><div id="example"><pre>import processing.opengl.*;
+
+import procontroll.*;
+import net.java.games.input.*;
+
+ControllIO controllIO;
+ControllDevice joypad;
+ControllStick stick1;
+ControllStick stick2;
+
+float transX;
+float transY;
+
+void setup(){
+  size(600,600,OPENGL);
+
+  transX = width/2;
+  transY = height/2;
+
+  controllIO = ControllIO.getInstance(this);
+
+  joypad = controllIO.getDevice("Logitech RumblePad 2 USB");
+  joypad.plug(this, "handleButton1Press", ControllIO.ON_PRESS, 1);
+  joypad.plug(this, "handleButton1Release", ControllIO.ON_RELEASE, 1);
+  joypad.plug(this, "handleMovement", ControllIO.WHILE_PRESS, 0);
+
+  stick1 = joypad.getStick(0);
+  stick1.setMultiplier(PI);
+
+  stick2 = joypad.getStick(1);
+  stick2.setTolerance(0.06f);
+  stick2.setMultiplier(0.05f);
+}
+
+void handleButton1Press(){
+  fill(255,0,0);
+  joypad.rumble(1);
+}
+
+void handleButton1Release(){
+  fill(255);
+}
+
+void handleMovement(final float i_x,final float i_y){
+  transX += i_x;
+  transY += i_y;
+}
+
+void draw(){
+  background(0);
+  lights();
+  translate(transX,transY,0);
+  rotateX(stick2.getTotalY());
+  rotateY(stick2.getTotalX());
+  box(200);
+}
+</pre></div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> description </div> 
+    <div id="pointcontent"><p>
+ The device class is for the communication with your input devices. A device
+ consists of buttons and sliders, sliders can be grouped to sticks.
+ </p>
+ <p>
+ To react on button events you can plug methods, that are called when
+ a button is pressed, released or while a button is pressed.
+ </p></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> constructors </div> 
+    <div id="pointcontent"> 
+      <pre>none available
+</pre> 
+    </div> 
+  </div> 
+     
+<div id="point"> 
+  <div id="pointname"> methods </div> 
+  <div id="members"> 
+<div id="membername"><a href="controlldevice_method_close.htm">close ( )</a></div> 
+<div id="memberdesc">Use this method to close a device.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_getbutton.htm">getButton ( )</a></div> 
+<div id="memberdesc">Use this method to get a Button.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_getcooliehat.htm">getCoolieHat ( )</a></div> 
+<div id="memberdesc">Use this method to get a Button.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_getname.htm">getName ( )</a></div> 
+<div id="memberdesc">Returns the name of the device.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_getnumberofbuttons.htm">getNumberOfButtons ( )</a></div> 
+<div id="memberdesc">Returns the number of buttons of the device.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_getnumberofsliders.htm">getNumberOfSliders ( )</a></div> 
+<div id="memberdesc">Returns the number of sliders of the device.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_getnumberofsticks.htm">getNumberOfSticks ( )</a></div> 
+<div id="memberdesc">Returns the number of sticks of the device.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_getslider.htm">getSlider ( )</a></div> 
+<div id="memberdesc">Use this method to get a Slider.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_getstick.htm">getStick ( )</a></div> 
+<div id="memberdesc">Use this method to get a Button.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_open.htm">open ( )</a></div> 
+<div id="memberdesc">Use this method to open a device.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_plug.htm">plug ( )</a></div> 
+<div id="memberdesc">i_intputDevice String: the name of the device that triggers the plug</div> 
+ 
+<div id="membername"><a href="controlldevice_method_printbuttons.htm">printButtons ( )</a></div> 
+<div id="memberdesc">Lists the available buttons of a device.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_printsliders.htm">printSliders ( )</a></div> 
+<div id="memberdesc">Lists the available sliders of a device.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_printsticks.htm">printSticks ( )</a></div> 
+<div id="memberdesc">Lists the available sticks of a device.</div> 
+ 
+<div id="membername"><a href="controlldevice_method_settolerance.htm">setTolerance ( )</a></div> 
+<div id="memberdesc">Use this method to set the tolerance for all sliders of the device.</div> 
+</div> 
+</div> 
+
+  <div id="point"> 
+    <div id="pointname"> usage </div> 
+    <div id="pointcontent">Web & Application</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> related </div> 
+    <div id="pointcontent"><A href="controllio_class_controllio.htm">ControllIO</A><BR>
+<A href="controllslider_class_controllslider.htm">ControllSlider</A><BR>
+<A href="controllbutton_class_controllbutton.htm">ControllButton</A><BR>
+<A href="controllstick_class_controllstick.htm">ControllStick</A><BR>
+</div> 
+  </div> 
+</div> 
+</body>
+<script language="JavaScript" src="script.js" type="text/javascript"></script>
+</html>

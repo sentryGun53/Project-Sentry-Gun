@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>proCONTROLL : : ControllCoolieHat</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body> 
+<div id="page"> 
+  <div id="describtion"> 
+    <div id="libname"><img src="images/procontroll.gif" width="259" height="40"></div> 
+    <div id="indexlink"><a href="index.htm"><img src="images/index.gif"></a></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> name </div> 
+    <div id="pointcontent"><div id="membertitle"> ControllCoolieHat </div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"><a href="#" id="exampleButton" onClick="handleExample()">openExample</a></div> 
+    <div id="pointcontent"><div id="example"><pre>import processing.opengl.*;
+
+import procontroll.*;
+import net.java.games.input.*;
+
+ControllIO controllIO;
+ControllDevice joypad;
+ControllCoolieHat cooliehat;
+
+float transX;
+float transY;
+
+void setup(){
+  size(600,600,OPENGL);
+
+  transX = width/2;
+  transY = height/2;
+
+  controllIO = ControllIO.getInstance(this);
+
+  joypad = controllIO.getDevice("Logitech RumblePad 2 USB");
+  joypad.printButtons();
+
+  cooliehat = joypad.getCoolieHat(0);
+  cooliehat.setMultiplier(4);
+}
+
+void handleButton1Press(){
+  fill(255,0,0);
+  joypad.rumble(1);
+}
+
+void draw(){
+  transX += cooliehat.getX();
+  transY += cooliehat.getY();
+  
+  background(0);
+  lights();
+  translate(transX,transY,0);
+  box(200);
+}
+</pre></div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> description </div> 
+    <div id="pointcontent">A cooliehat is a special button, that can be found on joypads
+ for example. It is not only on or of but does also have a 
+ direction.</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> constructors </div> 
+    <div id="pointcontent"> 
+      <pre>none available
+</pre> 
+    </div> 
+  </div> 
+     
+<div id="point"> 
+  <div id="pointname"> methods </div> 
+  <div id="members"> 
+<div id="membername"><a href="controllcooliehat_method_getmultiplier.htm">getMultiplier ( )</a></div> 
+<div id="memberdesc">Use this method to get the actual multiplier.</div> 
+ 
+<div id="membername"><a href="controllcooliehat_method_getname.htm">getName ( )</a></div> 
+<div id="memberdesc">Returns the name of the input.</div> 
+ 
+<div id="membername"><a href="controllcooliehat_method_getvalue.htm">getValue ( )</a></div> 
+<div id="memberdesc">Gives you the current value of an input.</div> 
+ 
+<div id="membername"><a href="controllcooliehat_method_getx.htm">getX ( )</a></div> 
+<div id="memberdesc">The current x value of the cooliehat.</div> 
+ 
+<div id="membername"><a href="controllcooliehat_method_gety.htm">getY ( )</a></div> 
+<div id="memberdesc">The current y value of the cooliehat.</div> 
+ 
+<div id="membername"><a href="controllcooliehat_method_plug.htm">plug ( )</a></div> 
+<div id="memberdesc">Plugs a method to handle incoming button events.</div> 
+ 
+<div id="membername"><a href="controllcooliehat_method_pressed.htm">pressed ( )</a></div> 
+<div id="memberdesc">This method returns true if the button was pressed.</div> 
+ 
+<div id="membername"><a href="controllcooliehat_method_setmultiplier.htm">setMultiplier ( )</a></div> 
+<div id="memberdesc">Use this method to set the actual multiplier.</div> 
+</div> 
+</div> 
+
+  <div id="point"> 
+    <div id="pointname"> usage </div> 
+    <div id="pointcontent">application</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> related </div> 
+    <div id="pointcontent"><A href="controllslider_class_controllslider.htm">ControllSlider</A><BR>
+<A href="controllstick_class_controllstick.htm">ControllStick</A><BR>
+<A href="controlldevice_class_controlldevice.htm">ControllDevice</A><BR>
+</div> 
+  </div> 
+</div> 
+</body>
+<script language="JavaScript" src="script.js" type="text/javascript"></script>
+</html>

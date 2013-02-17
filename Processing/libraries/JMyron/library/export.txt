@@ -1,0 +1,2 @@
+applet=JMyron.jar,libJMyron.jnilib,JMyron.dll
+application=JMyron.jar,libJMyron.jnilib,JMyron.dll

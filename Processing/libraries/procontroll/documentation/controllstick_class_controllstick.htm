@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>proCONTROLL : : ControllStick</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body> 
+<div id="page"> 
+  <div id="describtion"> 
+    <div id="libname"><img src="images/procontroll.gif" width="259" height="40"></div> 
+    <div id="indexlink"><a href="index.htm"><img src="images/index.gif"></a></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> name </div> 
+    <div id="pointcontent"><div id="membertitle"> ControllStick </div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"><a href="#" id="exampleButton" onClick="handleExample()">openExample</a></div> 
+    <div id="pointcontent"><div id="example"><pre>import procontroll.*;
+import java.io.*;
+
+ControllIO controll;
+ControllDevice device;
+ControllStick stick;
+ControllButton button;
+
+void setup(){
+  size(400,400);
+  
+  controll = ControllIO.getInstance(this);
+
+  device = controll.getDevice("Logitech RumblePad 2 USB");
+  device.printSticks();
+  device.setTolerance(0.05f);
+  
+  ControllSlider sliderX = device.getSlider("X-Achse");
+  ControllSlider sliderY = device.getSlider("Y-Achse");
+  
+  stick = new ControllStick(sliderX,sliderY);
+  
+  button = device.getButton("Taste 0");
+  
+  fill(0);
+  rectMode(CENTER);
+}
+
+float totalX = width/2;
+float totalY = height/2;
+
+void draw(){
+  background(255);
+  
+  if(button.pressed()){
+    fill(255,0,0);
+  }else{
+    fill(0);
+  }
+  
+  totalX = constrain(totalX + stick.getX(),10,width-10);
+  totalY = constrain(totalY + stick.getY(),10,height-10);
+  
+  rect(totalX,totalY,20,20);
+}
+</pre></div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> description </div> 
+    <div id="pointcontent">A Stick combines two Sliders to a joy stick with x and y values. This class is for simpler
+ handling of sliders belonging together. For detailed controll like different
+ multipliers for the different axes of the stick work with the Sliders instead.
+ <br>
+ Note that this class is quiet experimental as it is 
+ only tested with my joypad and correct function extremly
+ depends on the order of the sliders for a device. 
+ If the getStick ( ) function of ControllDevice gives you
+ wrong sticks, you can initialize your own by giving it your
+ own sliders.</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> constructors </div> 
+    <div id="pointcontent"> 
+      <pre>ControllStick(i_xSlider, i_ySlider);
+</pre> 
+    </div> 
+  </div> 
+   
+<div id="point"> 
+  <div id="pointname"> parameters </div> 
+  <div id="members">
+  <div id="membername">i_xSlider</div> 
+  <div id="memberdesc">ControllSlider, the slider for the x axis</div>
+
+  <div id="membername">i_ySlider</div> 
+  <div id="memberdesc">ControllSlider, the slider for the y axis</div>
+</div> 
+</div> 
+   
+<div id="point"> 
+  <div id="pointname"> methods </div> 
+  <div id="members"> 
+<div id="membername"><a href="controllstick_method_getmultiplier.htm">getMultiplier ( )</a></div> 
+<div id="memberdesc">Use this method to get the actual multiplier.</div> 
+ 
+<div id="membername"><a href="controllstick_method_getname.htm">getName ( )</a></div> 
+<div id="memberdesc">Returns the name of the stick. The sticks name is the combination
+ of the names of its sliders.</div> 
+ 
+<div id="membername"><a href="controllstick_method_gettolerance.htm">getTolerance ( )</a></div> 
+<div id="memberdesc">Use this method to get the tolerance value.</div> 
+ 
+<div id="membername"><a href="controllstick_method_gettotalx.htm">getTotalX ( )</a></div> 
+<div id="memberdesc">Use this method to get the total x value of a stick.</div> 
+ 
+<div id="membername"><a href="controllstick_method_gettotaly.htm">getTotalY ( )</a></div> 
+<div id="memberdesc">Use this method to get the total y value of a stick.</div> 
+ 
+<div id="membername"><a href="controllstick_method_getx.htm">getX ( )</a></div> 
+<div id="memberdesc">The current x value of the stick.</div> 
+ 
+<div id="membername"><a href="controllstick_method_gety.htm">getY ( )</a></div> 
+<div id="memberdesc">The current y value of the stick.</div> 
+ 
+<div id="membername"><a href="controllstick_method_reset.htm">reset ( )</a></div> 
+<div id="memberdesc">Use this method to set the totalvalue to 0.</div> 
+ 
+<div id="membername"><a href="controllstick_method_setmultiplier.htm">setMultiplier ( )</a></div> 
+<div id="memberdesc">Use this method to set the actual multiplier.</div> 
+ 
+<div id="membername"><a href="controllstick_method_settolerance.htm">setTolerance ( )</a></div> 
+<div id="memberdesc">Use this method to set the tolerance.</div> 
+</div> 
+</div> 
+
+  <div id="point"> 
+    <div id="pointname"> usage </div> 
+    <div id="pointcontent">application</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> related </div> 
+    <div id="pointcontent"><A href="controlldevice_class_controlldevice.htm">ControllDevice</A><BR>
+<A href="controllslider_class_controllslider.htm">ControllSlider</A><BR>
+</div> 
+  </div> 
+</div> 
+</body>
+<script language="JavaScript" src="script.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>proCONTROLL : : ControllIO : : getNumberOfDevices ( )</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body> 
+<div id="page"> 
+  <div id="describtion"> 
+    <div id="libname"><img src="images/procontroll.gif" width="259" height="40"></div> 
+    <div id="indexlink"><a href="index.htm"><img src="images/index.gif"></a></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> name </div> 
+    <div id="pointcontent"><div id="membertitle"> getNumberOfDevices ( ) </div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"><a href="#" id="exampleButton" onClick="handleExample()">openExample</a></div> 
+    <div id="pointcontent"><div id="example"><pre>import procontroll.*;
+import java.io.*;
+
+ControllIO controll;
+
+void setup(){
+  size(400,400);
+  
+  controll = ControllIO.getInstance(this);
+  controll.printDevices();
+  
+  for(int i = 0; i &lt; controll.getNumberOfDevices(); i++){
+    ControllDevice device = controll.getDevice(i);
+    
+    println(device.getName()+" has:");
+    println(" " + device.getNumberOfSliders() + " sliders");
+    println(" " + device.getNumberOfButtons() + " buttons");
+    println(" " + device.getNumberOfSticks() + " sticks");
+    
+    device.printSliders();
+    device.printButtons();
+    device.printSticks();
+  }
+}
+</pre></div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> description </div> 
+    <div id="pointcontent">Returns the number of available Devices</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> syntax </div> 
+    <div id="pointcontent"> 
+      <pre>getNumberOfDevices();
+</pre> 
+    </div> 
+  </div> 
+    
+<div id="point"> 
+  <div id="pointname"> returns </div> 
+  <div id="pointcontent">int, the number of available devices</div> 
+</div> 
+
+  <div id="point"> 
+    <div id="pointname"> usage </div> 
+    <div id="pointcontent">application</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> related </div> 
+    <div id="pointcontent"><A href="controllio_class_controllio.htm">ControllIO</A><BR>
+<A href="controlldevice_class_controlldevice.htm">ControllDevice</A><BR>
+<A href="controllio_method_getdevice.htm">getDevice ( )</A><BR>
+</div> 
+  </div> 
+</div> 
+</body>
+<script language="JavaScript" src="script.js" type="text/javascript"></script>
+</html>

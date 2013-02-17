@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>proCONTROLL : : ControllSlider</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body> 
+<div id="page"> 
+  <div id="describtion"> 
+    <div id="libname"><img src="images/procontroll.gif" width="259" height="40"></div> 
+    <div id="indexlink"><a href="index.htm"><img src="images/index.gif"></a></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> name </div> 
+    <div id="pointcontent"><div id="membertitle"> ControllSlider </div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"><a href="#" id="exampleButton" onClick="handleExample()">openExample</a></div> 
+    <div id="pointcontent"><div id="example"><pre>import processing.opengl.*;
+
+import procontroll.*;
+import net.java.games.input.*;
+
+ControllIO controllIO;
+ControllDevice joypad;
+ControllStick stick1;
+ControllStick stick2;
+
+float transX;
+float transY;
+
+void setup(){
+  size(600,600,OPENGL);
+
+  transX = width/2;
+  transY = height/2;
+
+  controllIO = ControllIO.getInstance(this);
+
+  joypad = controllIO.getDevice("Logitech RumblePad 2 USB");
+  joypad.plug(this, "handleButton1Press", ControllIO.ON_PRESS, 1);
+  joypad.plug(this, "handleButton1Release", ControllIO.ON_RELEASE, 1);
+  joypad.plug(this, "handleMovement", ControllIO.WHILE_PRESS, 0);
+
+  stick1 = joypad.getStick(0);
+  stick1.setMultiplier(PI);
+
+  stick2 = joypad.getStick(1);
+  stick2.setTolerance(0.06f);
+  stick2.setMultiplier(0.05f);
+}
+
+void handleButton1Press(){
+  fill(255,0,0);
+  joypad.rumble(1);
+}
+
+void handleButton1Release(){
+  fill(255);
+}
+
+void handleMovement(final float i_x,final float i_y){
+  transX += i_x;
+  transY += i_y;
+}
+
+void draw(){
+  background(0);
+  lights();
+  translate(transX,transY,0);
+  rotateX(stick2.getTotalY());
+  rotateY(stick2.getTotalX());
+  box(200);
+}
+</pre></div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> description </div> 
+    <div id="pointcontent">The slider class is for analog input elements having a value
+ range. Normally this range goes from -1 to 1. You can set
+ a multiplier to increase this range, this is usefull so
+ that you do not have to change the values in your application.
+ You can get the actual value and the total value of a slider.
+ The actual value gives you the current state of the controller.
+ For the total value the actual values for each frame are add.
+ If you not want a slider to react upto a certain value you can set 
+ a tolerance value.</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> constructors </div> 
+    <div id="pointcontent"> 
+      <pre>none available
+</pre> 
+    </div> 
+  </div> 
+     
+<div id="point"> 
+  <div id="pointname"> methods </div> 
+  <div id="members"> 
+<div id="membername"><a href="controllslider_method_getmultiplier.htm">getMultiplier ( )</a></div> 
+<div id="memberdesc">Use this method to get the actual multiplier.</div> 
+ 
+<div id="membername"><a href="controllslider_method_getname.htm">getName ( )</a></div> 
+<div id="memberdesc">Returns the name of the input.</div> 
+ 
+<div id="membername"><a href="controllslider_method_gettolerance.htm">getTolerance ( )</a></div> 
+<div id="memberdesc">Use this method to get the actual tolerance</div> 
+ 
+<div id="membername"><a href="controllslider_method_gettotalvalue.htm">getTotalValue ( )</a></div> 
+<div id="memberdesc">Use this method to get the total value of a slider.</div> 
+ 
+<div id="membername"><a href="controllslider_method_getvalue.htm">getValue ( )</a></div> 
+<div id="memberdesc">Gives you the current value of an input.</div> 
+ 
+<div id="membername"><a href="controllslider_method_isrelative.htm">isRelative ( )</a></div> 
+<div id="memberdesc">Use this method to see if a slider is relative. A relative sliders
+ value represents always the change between the current state and the last state.</div> 
+ 
+<div id="membername"><a href="controllslider_method_reset.htm">reset ( )</a></div> 
+<div id="memberdesc">Use this method to set the totalvalue to 0.</div> 
+ 
+<div id="membername"><a href="controllslider_method_setmultiplier.htm">setMultiplier ( )</a></div> 
+<div id="memberdesc">Use this method to set the actual multiplier.</div> 
+ 
+<div id="membername"><a href="controllslider_method_settolerance.htm">setTolerance ( )</a></div> 
+<div id="memberdesc">Use this method to set the tolerance.</div> 
+</div> 
+</div> 
+
+  <div id="point"> 
+    <div id="pointname"> usage </div> 
+    <div id="pointcontent">application</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> related </div> 
+    <div id="pointcontent"><A href="controlldevice_class_controlldevice.htm">ControllDevice</A><BR>
+<A href="controllbutton_class_controllbutton.htm">ControllButton</A><BR>
+</div> 
+  </div> 
+</div> 
+</body>
+<script language="JavaScript" src="script.js" type="text/javascript"></script>
+</html>

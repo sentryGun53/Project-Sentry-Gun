@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>proCONTROLL : : ControllStick : : setTolerance ( )</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body> 
+<div id="page"> 
+  <div id="describtion"> 
+    <div id="libname"><img src="images/procontroll.gif" width="259" height="40"></div> 
+    <div id="indexlink"><a href="index.htm"><img src="images/index.gif"></a></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> name </div> 
+    <div id="pointcontent"><div id="membertitle"> setTolerance ( ) </div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"><a href="#" id="exampleButton" onClick="handleExample()">openExample</a></div> 
+    <div id="pointcontent"><div id="example"><pre>import procontroll.*;
+import java.io.*;
+
+ControllIO controll;
+ControllDevice device;
+ControllStick stick;
+ControllButton button;
+
+void setup(){
+  size(400,400);
+  
+  controll = ControllIO.getInstance(this);
+
+  device = controll.getDevice("Logitech RumblePad 2 USB");
+  device.printSticks();
+  
+  stick = device.getStick("Z-Achse Z-Rotation");
+  stick.setTolerance(0.05f);
+  
+  button = device.getButton("Taste 0");
+  
+  fill(0);
+  rectMode(CENTER);
+}
+
+void draw(){
+  background(255);
+  
+  if(button.pressed()){
+    fill(255,0,0);
+  }else{
+    fill(0);
+  }
+  
+  float x = stick.getTotalX() + width/2;
+  float y = stick.getTotalY() + height/2;
+  
+  if(x > width + 20 || x &lt; - 20 || y > height + 20 || y &lt; - 20){
+    stick.reset();
+  }
+  
+  rect(x,y,20,20);
+}
+</pre></div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> description </div> 
+    <div id="pointcontent">If you not want a stick to react upto a certain value you can set 
+ a tolerance value. Use this method to set the tolerance.
+ By default this value is set to 0.</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> syntax </div> 
+    <div id="pointcontent"> 
+      <pre>setTolerance(i_tolerance);
+</pre> 
+    </div> 
+  </div> 
+   
+<div id="point"> 
+  <div id="pointname"> parameters </div> 
+  <div id="members">
+  <div id="membername">i_tolerance</div> 
+  <div id="memberdesc">float</div>
+</div> 
+</div> 
+  
+<div id="point"> 
+  <div id="pointname"> returns </div> 
+  <div id="pointcontent">None</div> 
+</div> 
+
+  <div id="point"> 
+    <div id="pointname"> usage </div> 
+    <div id="pointcontent">application</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> related </div> 
+    <div id="pointcontent"><A href="controllstick_class_controllstick.htm">ControllStick</A><BR>
+</div> 
+  </div> 
+</div> 
+</body>
+<script language="JavaScript" src="script.js" type="text/javascript"></script>
+</html>

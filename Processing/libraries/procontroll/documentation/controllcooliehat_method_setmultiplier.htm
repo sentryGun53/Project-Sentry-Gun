@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>proCONTROLL : : ControllCoolieHat : : setMultiplier ( )</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body> 
+<div id="page"> 
+  <div id="describtion"> 
+    <div id="libname"><img src="images/procontroll.gif" width="259" height="40"></div> 
+    <div id="indexlink"><a href="index.htm"><img src="images/index.gif"></a></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> name </div> 
+    <div id="pointcontent"><div id="membertitle"> setMultiplier ( ) </div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"><a href="#" id="exampleButton" onClick="handleExample()">openExample</a></div> 
+    <div id="pointcontent"><div id="example"><pre>import processing.opengl.*;
+
+import procontroll.*;
+import net.java.games.input.*;
+
+ControllIO controllIO;
+ControllDevice joypad;
+ControllCoolieHat cooliehat;
+
+float transX;
+float transY;
+
+void setup(){
+  size(600,600,OPENGL);
+
+  transX = width/2;
+  transY = height/2;
+
+  controllIO = ControllIO.getInstance(this);
+
+  joypad = controllIO.getDevice("Logitech RumblePad 2 USB");
+  joypad.printButtons();
+
+  cooliehat = joypad.getCoolieHat(0);
+  cooliehat.setMultiplier(4);
+}
+
+void handleButton1Press(){
+  fill(255,0,0);
+  joypad.rumble(1);
+}
+
+void draw(){
+  transX += cooliehat.getX();
+  transY += cooliehat.getY();
+  
+  background(0);
+  lights();
+  translate(transX,transY,0);
+  box(200);
+}
+</pre></div></div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> description </div> 
+    <div id="pointcontent">Pressing a cooliehat causes a change by 1 in the according direction.
+ With the multiplier you can increase and decrese this range. Use this 
+ method to set the actual multiplier. By default this value is 1.0.</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> syntax </div> 
+    <div id="pointcontent"> 
+      <pre>setMultiplier(i_multiplier);
+</pre> 
+    </div> 
+  </div> 
+   
+<div id="point"> 
+  <div id="pointname"> parameters </div> 
+  <div id="members">
+  <div id="membername">i_multiplier</div> 
+  <div id="memberdesc">float, the new multiplier for a CrossButton</div>
+</div> 
+</div> 
+  
+<div id="point"> 
+  <div id="pointname"> returns </div> 
+  <div id="pointcontent">None</div> 
+</div> 
+
+  <div id="point"> 
+    <div id="pointname"> usage </div> 
+    <div id="pointcontent">application</div> 
+  </div> 
+  <div id="point"> 
+    <div id="pointname"> related </div> 
+    <div id="pointcontent"><A href="controllcooliehat_class_controllcooliehat.htm">ControllCoolieHat</A><BR>
+<A href="controllcooliehat_method_getmultiplier.htm">getMultiplier ( )</A><BR>
+</div> 
+  </div> 
+</div> 
+</body>
+<script language="JavaScript" src="script.js" type="text/javascript"></script>
+</html>

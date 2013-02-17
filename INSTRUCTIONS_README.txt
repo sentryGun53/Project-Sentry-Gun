@@ -1,0 +1,22 @@
+INSTRUCTIONS:
+
+(These instructions assume you have already installed the Processing IDE and Arduino IDE to your 'My Documents' folder.
+
+1) Copy the 'Arduino' and 'Processing' folders to your 'My Documents' folder (or to whichever
+	folder 'arduino-1.0.3' and 'processing-1.5.1' are located in). If you already have folders
+	called 'Arduino' or 'Processing', then merge these with them.
+
+2) Copy "myron_ezcam.dll" and "DSVL.dll" to the 'processing-1.5.1' folder.
+
+3) Open "Arduino_Turret_06_13.ino" in the Arduino IDE, select the proper type in
+	the "#define type" line, and upload it to your Arduino or Standalone controller.
+	You only need to do this once ever, so close the Arduino IDE.
+
+4) Finally, open "Processing_Turret_06_13.pde" in the Processing IDE. Click run, and the Project
+	Sentry Gun code should start up for you. Enjoy!
+
+
+Note: a 'Minimal' Version of the Processing code is provided as a part of this package. This is intended for more
+	advanced users, who may want to run the Processing code on a low-power platform with. It uses just over half
+	the amount of memory as the standard version. If you use this 'Minimal' version, be sure to read the
+	instructions in the comments at the top of the code to properly import your saved settings.

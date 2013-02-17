@@ -1,0 +1,137 @@
+body {
+	text-align: center;
+	margin: 0px;
+}
+
+a:link {
+	color: #009999;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #009999;
+	text-decoration: none;
+}
+
+a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+a:active {
+	color: black;
+	text-decoration: none;
+}
+
+/*fr index seite*/
+div#page {
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	width: 800px;
+}
+
+div#describtionIndex {
+	float:left;
+	width: 500px;
+	text-align: justify;
+	margin-left: 1em;
+}
+
+div#libnameIndex {
+	margin-top: 3em;
+	margin-bottom: 2em;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #009999;
+	padding-bottom: 1em;
+}
+
+div#textIndex {
+	padding-right: 2em;
+	margin-left: 3.1em;
+}
+
+div#links {
+	height: 500px;
+	overflow: auto;
+	padding-right: 1em;
+	padding-bottom: 0;
+	padding-left: 2em;
+	padding-top: 9.3em;
+	border-left: 1px dotted #009999;
+	width: 200px;
+}
+
+div#classname {
+	font-weight: bold;
+	padding-bottom: 0.2em;
+}
+div#classlinks {
+	padding-bottom: 1em;
+}
+
+/* fr member seite */
+div#describtion {
+	text-align: justify;
+	margin-left: 1em;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #009999;
+	padding-bottom: 2em;
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
+div#libname{
+	float: right;
+	padding-right: 34.2em;
+}
+div#indexlink {
+	margin-left: 1em;
+}
+img {
+	border: none;
+}
+div#pointname {
+	float: left;
+	width: 8em;
+	padding-left: 0.5em;
+}
+div#point {
+	margin-left: 4.1em;
+	margin-right: 4.1em;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #009999;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+div#pointcontent {
+	margin-left: 8em;
+	padding-left: 2em;
+	padding-right: 0.5em;
+	text-align: justify;
+}
+div#members {
+	margin-left: 8em;
+	padding-left: 2em;
+}
+div#membername {
+	float: left;
+	width: 12em;
+}
+div#memberdesc {
+	margin-left: 12em;
+	margin-bottom: 0.4em;
+}
+pre {
+	margin: 0px;
+}
+div#membertitle {
+	font-weight: bold;
+	color: #009999;
+}
