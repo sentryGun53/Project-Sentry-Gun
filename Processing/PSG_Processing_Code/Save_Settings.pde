@@ -61,9 +61,6 @@ public void loadSettings() {
   yMin = float(loadData[4]);
   yMax = float(loadData[5]);
   
-  xRatio = (camWidth / (xMax - xMin)); 
-  yRatio = (camHeight/ (yMax - yMin));  
-  
   effect = int(loadData[6]);
   mirrorCam = boolean(loadData[7]);
   minBlobArea = int(loadData[8]);

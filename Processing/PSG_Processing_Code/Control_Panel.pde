@@ -21,7 +21,7 @@ GCombo dropdown_effect, dropdown_firingMode, dropdown_comPort;   // dropdown men
 GOptionGroup opgMouseOver;
 GOption optHand, optXhair, optMove, optText, optWait;
 
-// G4P components for second windowl
+// G4P components for second window
 GWindow window_main;
 
 int sliderInertia = 3;
