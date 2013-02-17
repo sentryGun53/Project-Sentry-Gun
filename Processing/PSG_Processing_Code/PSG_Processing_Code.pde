@@ -1,27 +1,20 @@
 /*
- ---------- Project Sentry Gun:  TURRET VERSION 6.13 ----------
- ==============================================================
- ------ An Open-Source Project, initiated by Bob Rudolph ------
+ -------------------- Project Sentry Gun --------------------
+ ============================================================
+ ----- An Open-Source Project, initiated by Bob Rudolph -----
    
- Last updated January 22, 2013.
- This is the computer side of the code, and is compatible with version 6.13 of the Arduino/Standalone code.
  
  Help & Reference: http://projectsentrygun.rudolphlabs.com/make-your-own/using-the-software
  Forum: http://projectsentrygun.rudolphlabs.com/forum
-  
- The Input Device functionality lets you use a joystick or USB game controller to control the sentry. To set this up,
- run the "InputDeviceSetupTool.pde" code from the Processing IDE. See the instructions at the top of that code for more 
- detailed directions.
-  
-  
+ 
+   
  A few keyboard shortcuts:
  press 'p' for a random sound effect
  press 'b' to set background image
- hold 'r' and click+drag to form a rectangle "fire-restricted" zone
+ hold 'r' and click+drag to form a rectangle  "fire-restricted" zone
  press SPACEBAR to toggle manual/autonomous modes
- press SHIFT to toggle arrow key aiming
- use arrow keys to aim in manual mode when arrow key aiming is enabled        
-        
+ press SHIFT to toggle arrow-key aiming in manual mode
+ 
  */
 
 
@@ -525,6 +518,8 @@ void manualMode() {
         if (keyCode == 40) {                       // down arrow
           yPosition += 1;
         }
+        fire = 0;
+        
       }
     }
   }else{  
@@ -543,6 +538,7 @@ void manualMode() {
         if (keyCode == 40) {                       // down arrow
           displayY += 1;
         }
+        fire = 0;
       }
     }else{    
       displayX = mouseX;
@@ -554,8 +550,9 @@ void manualMode() {
         fire = 0;
       }
     }
-    targetX = int((displayX/xRatio)+xMin);                 // calculate position to go to based on mouse position
-    targetY = int(((camHeight-displayY)/yRatio)+yMin);     //
+    targetX = constrain(int((displayX/xRatio)+xMin), 0, 180);                 // calculate position to go to based on mouse position
+    
+    targetY = constrain(int(((camHeight-displayY)/yRatio)+yMin), 0, 180);     //
     
   }
 }
