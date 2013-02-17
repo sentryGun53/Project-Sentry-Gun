@@ -8,11 +8,11 @@ INSTRUCTIONS:
 
 2) Copy "myron_ezcam.dll" and "DSVL.dll" to the 'processing-1.5.1' folder.
 
-3) Open "Arduino_Turret_06_13.ino" in the Arduino IDE, select the proper type in
+3) Open "PSG_Arduino_Code.ino" in the Arduino IDE, select the proper type in
 	the "#define type" line, and upload it to your Arduino or Standalone controller.
 	You only need to do this once ever, so close the Arduino IDE.
 
-4) Finally, open "Processing_Turret_06_13.pde" in the Processing IDE. Click run, and the Project
+4) Finally, open "PSG_Processing_Code.pde" in the Processing IDE. Click run, and the Project
 	Sentry Gun code should start up for you. Enjoy!
 
 
