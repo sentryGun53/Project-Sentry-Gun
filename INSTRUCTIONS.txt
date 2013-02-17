@@ -20,6 +20,3 @@ Note: a 'Minimal' Version of the Processing code is provided as a part of this p
 	advanced users, who may want to run the Processing code on a low-power platform with. It uses just over half
 	the amount of memory as the standard version. If you use this 'Minimal' version, be sure to read the
 	instructions in the comments at the top of the code to properly import your saved settings.
-
-
-Text link
