@@ -1,11 +1,10 @@
 /*
- ---------- Project Sentry Gun:  TURRET VERSION 6.13 ----------
- ==============================================================
- ------ An Open-Source Project, initiated by Bob Rudolph ------
+ -------------------- Project Sentry Gun --------------------
+ ============================================================
+ ----- An Open-Source Project, initiated by Bob Rudolph ----- 
+*/
  
- Last updated January 22, 2013.
- This code works on any Arduino or the Standalone Sentry Controller, and is compatible with version 6.13 of the Processing code.     */
-
+ 
 // Set your controller type here
 // type options: "Arduino_bare", "Shield_v4", "Shield_v6", "Shield_v7", "Standalone_v3", "Standalone_v5", "Standalone_v7", "Standalone_v8"
 #define type "Arduino_bare" 
