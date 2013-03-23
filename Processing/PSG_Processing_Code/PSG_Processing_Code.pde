@@ -38,10 +38,10 @@ public int effect = 0;                // Effect
 
 public boolean mirrorCam = false;            //   set true to mirror camera image
 
-public float xMin = 142.0;                   //  0.0      used for calibration
-public float xMax = 47.0;                    //  180.0    
-public float yMin = 140.0;                    //  180.0
-public float yMax = 124.0;                    //  0.0
+public float xMin = 0.0;      //  Actual calibration values are loaded from "settings.txt".
+public float xMax = 180.0;    //  If "settings.txt" is borken / unavailable, these defaults are used instead - 
+public float yMin = 0.0;      //  otherwise, changing these lines will have no effect on your gun's calibration.
+public float yMax = 180.0;    //
 
 import JMyron.*;
 import blobDetection.*;

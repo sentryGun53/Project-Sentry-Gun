@@ -7,7 +7,7 @@
  
 // Set your controller type here
 // type options: "Arduino_bare", "Shield_v4", "Shield_v6", "Shield_v7", "Standalone_v3", "Standalone_v5", "Standalone_v7", "Standalone_v8"
-#define type "Arduino_bare" 
+#define type "Standalone_v8" 
 
 
 /* Help & Reference: http://projectsentrygun.rudolphlabs.com/make-your-own
