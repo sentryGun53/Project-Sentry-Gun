@@ -53,7 +53,7 @@
 #define disablePlateDelay 5000               // how long to disable sentry when plate is pressed (in milliseconds)
 
 // ammunition magazine/clip settings:
-boolean useAmmoCounter = true;                  // if you want to use the shot counter / clip size feature, set this to true
+boolean useAmmoCounter = false;                  // if you want to use the shot counter / clip size feature, set this to true
 int clipSize = 5;                          // how many shots before the gun will be empty and the gun will be disabled (reload switch resets the ammo counter)
 
 //   <=========================================================================>
