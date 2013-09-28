@@ -5,7 +5,7 @@
    
  
  Help & Reference: http://projectsentrygun.rudolphlabs.com/make-your-own/using-the-software
- Forum: http://projectsentrygun.rudolphlabs.com/forum
+ Forum: http://projectsentrygun.rudolphlabs.com/forum 
  
    
  A few keyboard shortcuts:

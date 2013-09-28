@@ -34,13 +34,13 @@
 // servo positions:
 #define panServo_scanningMin 0               // how far side to side you want the 
 #define panServo_scanningMax 180             // gun to turn while 'scanning'
-#define scanningSpeed 3000                   // total time for 1 sweep (in milliseconds)
+#define scanningSpeed 2000                   // total time for 1 sweep (in milliseconds)
 
-#define panServo_HomePosition 90            // 'centered' gun position 
-#define tiltServo_HomePosition 130           //
+#define panServo_HomePosition 97            // 'centered' gun position 
+#define tiltServo_HomePosition 65           //
 
-#define panServo_ReloadPosition  90         // convenient position for reloading gun
-#define tiltServo_ReloadPosition 180         // 
+#define panServo_ReloadPosition  97         // convenient position for reloading gun
+#define tiltServo_ReloadPosition 150         // 
 
 #define triggerServo_HomePosition 120        // trigger servo not-firing position
 #define triggerServo_SqueezedPosition 90     // trigger servo firing position
