@@ -120,7 +120,7 @@ typedef struct config_t
   double yMin;
   double yMax;
 
-} 
+}
 configuration;
 configuration configuration1;
 
